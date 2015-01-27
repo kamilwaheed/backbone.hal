@@ -3,7 +3,9 @@
   describe("HAL.Collection", function() {
     beforeEach(function() {
       this.hal_response = Helper.collection_response;
-      return this.col = new HAL.Collection(this.hal_response);
+      return this.col = new HAL.Collection(this.hal_response, {
+        parseImmediately: true
+      });
     });
     describe("when instantiated", function() {
       it("strips out the _links and _embedded properties", function() {

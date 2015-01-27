@@ -15,7 +15,7 @@
       __extends(Model, _super);
 
       function Model(attrs, options) {
-        if (options.parseImmediately) {
+        if (options && options.parseImmediately) {
           attrs = this.parse(_.clone(attrs));
         }
         Model.__super__.constructor.call(this, attrs, options);
@@ -49,7 +49,7 @@
       __extends(Collection, _super);
 
       function Collection(obj, options) {
-        if (_.isArray(obj) && options.parseImmediately) {
+        if (_.isArray(obj) && options && options.parseImmediately) {
           obj = this.parse(_.clone(obj));
         }
         Collection.__super__.constructor.call(this, obj, options);

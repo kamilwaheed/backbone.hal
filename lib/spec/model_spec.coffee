@@ -2,7 +2,7 @@ describe "HAL.Model", ->
   beforeEach ->
     @hal_response = Helper.model_response
     @collection = new HAL.Collection()
-    @model = new HAL.Model @hal_response, { collection: @collection }
+    @model = new HAL.Model @hal_response, { collection: @collection, parseImmediately: true }
 
   describe "when instantiated", ->
     it "strips out the _links and _embedded properties", ->

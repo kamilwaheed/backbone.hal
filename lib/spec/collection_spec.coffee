@@ -1,7 +1,7 @@
 describe "HAL.Collection", ->
   beforeEach ->
     @hal_response = Helper.collection_response
-    @col = new HAL.Collection @hal_response
+    @col = new HAL.Collection @hal_response, { parseImmediately: true }
 
   describe "when instantiated", ->
     it "strips out the _links and _embedded properties", ->
