@@ -5,7 +5,8 @@
 ) this, (Backbone, _) ->
   class Model extends Backbone.Model
     constructor: (attrs, options) ->
-      super @parse(_.clone attrs), options
+      attrs = @parse(_.clone attrs) if options.parseImmediately
+      super attrs, options
 
     parse: (attrs = {}) ->
       @links = attrs._links || {}
@@ -23,7 +24,7 @@
 
   class Collection extends Backbone.Collection
     constructor: (obj, options) ->
-      obj = @parse(_.clone obj) if not _.isArray(obj)
+      obj = @parse(_.clone obj) if _.isArray(obj) and options.parseImmediately
       super obj, options
 
     parse: (obj = {}) ->
